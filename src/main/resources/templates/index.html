@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+<div class="container">
+    <h2>키워드 맛집</h2>
+    <p>한 달간의 검색량을 실시간으로 확인하세요!</p>
+    <!--검색창-->
+    <form action="/search" method="GET">
+        <input type="text" name="keyword" placeholder="ex)동탄맛집">
+        <button type="submit">검색</button>
+    </form>
+
+    <div class="result-box">
+        <p>총 월간 검색량 :</p>
+       <span th:text="${test}"></span>
+    </div>
+</div>
+
+</body>
+</html>
