@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SearchApiController {
 
-    private NaverSearchService naverSearchService;
+    private final NaverSearchService naverSearchService;
     @GetMapping("/api/search")
     public KeywordResponseDto searchKeyword(@RequestParam("keyword") String keyword){
-        if(keyword != null || keyword.isEmpty()){
+        if(keyword == null || keyword.isEmpty()){
             return null;
         }
         return naverSearchService.getKeywordVolume(keyword.trim());

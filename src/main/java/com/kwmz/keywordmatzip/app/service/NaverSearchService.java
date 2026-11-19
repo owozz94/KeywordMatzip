@@ -19,9 +19,9 @@ public class NaverSearchService {
 
     @Value("${naver.api.customer-id}")
     private String customerId;
-    @Value("${aver.api.access-license")
+    @Value("${naver.api.access-license}")
     private String accessLicense;
-    @Value("${naver.api.client-secret-key")
+    @Value("${naver.api.client-secret-key}")
     private String secretKey;
     @Value("${naver.api.base-url}")
     private String baseUrl;
@@ -58,7 +58,11 @@ public class NaverSearchService {
                 JsonNode target = keywordList.get(0);
 
                 String pcStr = target.path("monthlyPcQcCnt").asText("0");
+                String mobileCnt = target.path("monthlyMobileQcCnt").asText("0");
+                int totalCnt = Integer.parseInt(pcStr)+Integer.parseInt(mobileCnt);
                 result.setPcCnt(pcStr);
+                result.setMobileCnt(mobileCnt);
+                result.setTotalCnt(totalCnt);
             }
 
         } catch (Exception e) {
